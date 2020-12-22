@@ -12,26 +12,26 @@ end note
 fork
 :Thread.Sleep;
 note left
-½µµÍ CRUD ÆµÂÊ
+é™ä½ CRUD é¢‘ç‡
 ====
-ÔÚÑ­»·ÖĞÌí¼Ó //Thread.Sleep//
+åœ¨å¾ªç¯ä¸­æ·»åŠ  //Thread.Sleep//
 end note
 
-#SkyBlue:Á¬½ÓÊı£º280£¬
-ÔËĞĞ 68 ·ÖÖÓ;
-floating note left: ÔËĞĞ½á¹û
+#SkyBlue:è¿æ¥æ•°ï¼š280ï¼Œ
+è¿è¡Œ 68 åˆ†é’Ÿ;
+floating note left: è¿è¡Œç»“æœ
 
 fork again
 :Pooling=false;
 note right
-½ûÓÃÁ¬½Ó³Ø
+ç¦ç”¨è¿æ¥æ± 
 ====
-ÔÚÁ¬½Ó×Ö·û´®ÖĞÌí¼Ó //Pooling=false;//
+åœ¨è¿æ¥å­—ç¬¦ä¸²ä¸­æ·»åŠ  //Pooling=false;//
 end note
-#SkyBlue:Á¬½ÓÊı£º5£¬
-ÔËĞĞ8·ÖÖÓ;
-floating note right: ÔËĞĞ½á¹û
+#SkyBlue:è¿æ¥æ•°ï¼š5ï¼Œ
+è¿è¡Œ8åˆ†é’Ÿ;
+floating note right: è¿è¡Œç»“æœ
 endfork
 
-:<b>ÔËĞĞÍê³É</b>;
+:<b>è¿è¡Œå®Œæˆ</b>;
 @enduml
