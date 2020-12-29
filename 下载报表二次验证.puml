@@ -64,3 +64,42 @@ else (否)
     detach
 endif
 @enduml
+
+
+@startuml 用例图
+
+' !include themes/puml-theme-cerulean.puml
+!include themes/puml-theme-materia-outline.puml
+' !include themes/puml-theme-superhero.puml
+
+left to right direction
+
+actor 顾问 as a #FF00FF
+
+rectangle  用户 {
+    actor "主账号" as c
+    actor "子账号" as d #0000FF
+}
+
+package "系统" {
+    usecase "绑定二次验证的手机" as UC1
+    usecase "获取验证码" as UC2
+    usecase "输入验证码并验证" as UC3
+    usecase "下载报表" as UC4
+}
+
+c --> UC1
+c --> UC2
+c --> UC3
+c --> UC4
+
+d -[#0000FF]-> UC2
+d -[#0000FF]-> UC3
+d -[#0000FF]-> UC4
+
+' a -[#FF00FF]-> UC4
+
+UC2 ..\\ UC3
+UC3 ..\\ UC4
+
+@enduml
