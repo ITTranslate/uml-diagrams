@@ -1,0 +1,66 @@
+@startuml 下载报表流程图
+' !include themes/puml-theme-cerulean.puml
+!include themes/puml-theme-materia.puml
+' !include themes/puml-theme-materia-outline.puml
+' !include themes/puml-theme-sketchy-outline.puml
+' !include themes/puml-theme-sketchy.puml
+
+title 下载报表流程图
+
+skinparam ConditionEndStyle hline
+
+:点击下载;
+if (已经二次验证) then (是)
+    if(验证过期？) then (是)
+        :发送验证码进行二次验证;
+        if (验证成功) then (是)
+        else (否)
+            :下载失败;
+            stop
+        endif
+    else (否)
+    endif
+else (否)
+    if(已经绑定二次\n验证的手机号) then (否)
+        if (绑定二次验证手机号成功？) then (是)
+        else (否)
+            :下载失败;
+            stop
+        endif
+    else (是)
+        :发送验证码进行二次验证;
+        if (验证成功) then (否)
+            :下载失败;
+            stop
+        else (是)
+        endif
+    endif
+endif
+
+:下载报表;
+
+stop
+@enduml
+
+
+
+
+@startuml 绑定二次验证手机号流程图
+' !include themes/puml-theme-cerulean.puml
+!include themes/puml-theme-materia.puml
+' !include themes/puml-theme-cerulean-outline.puml
+title 绑定二次验证手机号流程图
+
+start
+if (当前登录的是主账号) then (是)
+    repeat :输入手机号;
+    :发送验证码进行验证;
+    backward :前端提示验证失败;
+    repeat while (验证成功？) is (否) not (是)
+    :绑定成功;
+    detach
+else (否)
+    :绑定失败;
+    detach
+endif
+@enduml
