@@ -1,0 +1,78 @@
+@startmindmap 11
+!include themes/puml-theme-cerulean.puml
+' !include themes/puml-theme-materia.puml
+
+<style>
+node {
+    MaximumWidth 90
+}
+arrow {
+    LineThickness 1.5
+}
+</style>
+
+title C# 8.0 之前
+' center header
+' endheader
+' center footer C# 8.0 之前
+
+*[#Orange]:声明引用类型变量
+<i>BlogSite b;</i>
+;
+** 编译器在执行静态分析时
+***[#FFBBCC] 如果检测出变量 b 为 null，则会警告您
+****[#FF9988] 运行时，如果遇到 null，抛出 NullReferenceException 异常
+***[#lightblue] 如果检测不到变量 b 为 null，便不会警告
+****[#FF9988] 运行时，如果遇到 null，抛出 NullReferenceException 异常
+@endmindmap
+
+@startmindmap 22
+!include themes/puml-theme-cerulean.puml
+' !include themes/puml-theme-materia.puml
+
+<style>
+node {
+    MaximumWidth 92
+}
+arrow {
+    LineThickness 1.5
+}
+</style>
+
+title C# 8.0 之后
+
+* C# 8.0 之后
+
+**: 配置
+<Nullable>disable</Nullable>;
+***[#Orange]:声明引用类型变量
+<i>BlogSite b;</i>;
+**** 与 C# 8.0 之前的含意一样
+
+**: 配置
+<Nullable>enable</Nullable>;
+
+***[#Orange]: 声明引用类型变量
+<i>BlogSite b;</i>;
+**** b 不可以为 null
+
+*****: 赋值为 null：
+<i>b = null;</i>;
+******[#FFBBCC] 编译器执行静态分析时，会警告：将可能的 null 值转换为不可为 null 类型
+*******[#FF9988] 运行时，如果遇到 null，抛出 NullReferenceException 异常
+
+*****[#SkyBlue]: 赋值为 null!：
+<i>b = null!;</i>;
+******[#lightgreen] 编译器执行静态分析时，不进行 null 检查，不会警告
+*******[#FF9988] 运行时，如果遇到 null，抛出 NullReferenceException 异常
+
+***[#Orange]:声明引用类型变量
+<i>BlogSite? b;</i>;
+**** b 可以为 null，相当于从 BlogSite 类型扩展出了一个可以为 null 的新类型 BlogSite?
+
+*****: 赋值为 null：
+<i>b = null;</i>;
+******[#lightgreen] 编译器不会警告
+
+*******[#FF9988] 运行时，如果遇到 null，抛出 NullReferenceException 异常
+@endmindmap
