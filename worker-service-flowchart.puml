@@ -1,0 +1,29 @@
+@startuml startup
+!include themes/puml-theme-materia.puml
+
+title 启动时的执行顺序
+
+start
+
+:服务启动;
+:调用 //Worker// 中的 **StartAsync**;
+:调用基类 //BackgroundService// 中的 **StartAsync**;
+:执行 //Worker// 中的 **ExecuteAsync**;
+:Worker Service 持续运行;
+
+@enduml
+
+@startuml shutdown
+!include themes/puml-theme-materia.puml
+
+title 关闭时的执行顺序
+
+:收到关闭信号（例如：Ctrl+C）;
+:调用 //Worker// 中的 **StopAsync**;
+:调用基类 //BackgroundService// 中的 **StopAsync**;
+:退出 //Worker// 中的 **ExecuteAsync**;
+:退出应用程序;
+
+end
+
+@enduml
